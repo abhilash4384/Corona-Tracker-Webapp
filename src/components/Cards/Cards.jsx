@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import CountUp from "react-countup";
 import cx from "classnames";
+import { Spring, config } from "react-spring/renderprops";
 
 import styles from "./Cards.module.css";
 
@@ -77,12 +78,16 @@ const Cards = ({ data }) => {
                   {date}
                 </Typography>
               </CardContent>
-              <CircularProgress
-                size={200}
-                value={100}
-                variant="static"
-                className={styles.fabProgress}
-              />
+              <Spring from={{ value: 0 }} to={{ value: 100 }}>
+                {(props) => (
+                  <CircularProgress
+                    size={200}
+                    value={props.value}
+                    variant="static"
+                    className={styles.fabProgress}
+                  />
+                )}
+              </Spring>
             </Grid>
           </>
         ))}
