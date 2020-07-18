@@ -4,6 +4,7 @@
 
 .card {
   margin: 0 2% !important;
+  position: "relative";
 }
 
 .infected {
@@ -16,6 +17,12 @@
 
 .deaths {
   border-bottom: 10px solid rgba(255, 0, 0, 0.5);
+}
+
+.fabProgress {
+  margin-top: -57%;
+  z-index: 1;
+  margin-left: 15%;
 }
 
 @media (max-width: 770px) {

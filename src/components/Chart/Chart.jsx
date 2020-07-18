@@ -140,7 +140,7 @@ const Chart = ({ country, data: { confirmed, recovered, deaths } }) => {
           ],
         }}
         options={{
-          legent: { display: false },
+          legend: { display: false },
           title: { display: true, text: `Current state in ${country}` },
         }}
       />

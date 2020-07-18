@@ -39,32 +39,52 @@ const Cards = ({ data }) => {
   const date = new Date(data.lastUpdate).toDateString();
   return (
     <div className={styles.container}>
-      <Grid container spacing={3} justify="center">
+      <Grid
+        container
+        spacing={3}
+        alignItems="center"
+        alignContent="center"
+        justify="center"
+      >
         {gridData.map((rowData) => (
-          <Grid
-            key={rowData.key}
-            item
-            xs={12}
-            md={3}
-            alignItems="center"
-            component={Card}
-            className={cx(styles.card, styles[rowData.className])}
-          >
-            <CardContent>
-              <Typography variant="h6" color="textSecondary" gutterBottom>
-                {rowData.title}
-              </Typography>
-              <Typography variant="h5">
-                <CountUp
-                  start={0}
-                  end={data[rowData.key]?.value}
-                  duration={2.5}
-                  separator=","
-                />
-              </Typography>
-              <Typography gutterBottom>{date}</Typography>
-            </CardContent>
-          </Grid>
+          <>
+            <Grid
+              key={rowData.key}
+              item
+              xs={12}
+              md={3}
+              component={Card}
+              className={cx(styles.card, styles[rowData.className])}
+            >
+              <CardContent style={{ paddingTop: "15%" }}>
+                <Typography
+                  align="center"
+                  variant="h6"
+                  color="textSecondary"
+                  gutterBottom
+                >
+                  {rowData.title}
+                </Typography>
+                <Typography align="center" variant="h5">
+                  <CountUp
+                    start={0}
+                    end={data[rowData.key]?.value}
+                    duration={2.5}
+                    separator=","
+                  />
+                </Typography>
+                <Typography align="center" gutterBottom>
+                  {date}
+                </Typography>
+              </CardContent>
+              <CircularProgress
+                size={200}
+                value={100}
+                variant="static"
+                className={styles.fabProgress}
+              />
+            </Grid>
+          </>
         ))}
       </Grid>
     </div>

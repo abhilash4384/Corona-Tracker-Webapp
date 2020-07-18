@@ -8,6 +8,7 @@ import Autocomplete from "react-autocomplete";
 const CountryPicker = ({ handleCountryChange }) => {
   const [fetchedCountries, setFetechedCountries] = useState([]);
   const [value, setValue] = useState("");
+  const [shouldOpen, setShouldOpen] = useState(true);
   const [filtredData, setFiltredData] = useState([]);
 
   useEffect(() => {
@@ -21,6 +22,8 @@ const CountryPicker = ({ handleCountryChange }) => {
   const onChangeHandler = (e) => {
     const val = e.target.value;
     setValue(val);
+    setShouldOpen(true);
+
     const filtredData = fetchedCountries.filter((country) =>
       country.label.toLowerCase().includes(val)
     );
@@ -30,12 +33,14 @@ const CountryPicker = ({ handleCountryChange }) => {
 
   const onSelectHandler = (v) => {
     setValue(v);
+    setShouldOpen(false);
     handleCountryChange(v);
   };
 
   return (
     <Box display="flex" justifyContent="center" m={1} p={1}>
       <Autocomplete
+        open={value != "" && shouldOpen}
         renderInput={(props) => (
           <TextField
             {...props}
