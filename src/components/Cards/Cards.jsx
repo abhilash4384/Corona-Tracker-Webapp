@@ -1,5 +1,11 @@
 import React from "react";
-import { Card, CardContent, Typography, Grid } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  CircularProgress,
+} from "@material-ui/core";
 import CountUp from "react-countup";
 import cx from "classnames";
 
@@ -7,19 +13,19 @@ import styles from "./Cards.module.css";
 
 const gridData = [
   {
-    title: "Infected",
+    title: "INFECTED",
     description: "No of active cases of COVID-19",
     className: "infected",
     key: "confirmed",
   },
   {
-    title: "Recovered",
+    title: "RECOVERED",
     description: "No of recoveries of COVID-19",
     className: "recovered",
     key: "recovered",
   },
   {
-    title: "Deaths",
+    title: "DEATHS",
     description: "No of deaths caused by COVID-19",
     className: "deaths",
     key: "deaths",
@@ -30,7 +36,7 @@ const Cards = ({ data }) => {
   if (!data || !data.confirmed) {
     return "Loading....";
   }
-  // const date = new Date(data.lastUpdate).toDateString();
+  const date = new Date(data.lastUpdate).toDateString();
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">
@@ -40,11 +46,12 @@ const Cards = ({ data }) => {
             item
             xs={12}
             md={3}
+            alignItems="center"
             component={Card}
             className={cx(styles.card, styles[rowData.className])}
           >
             <CardContent>
-              <Typography color="textSecondary" gutterBottom>
+              <Typography variant="h6" color="textSecondary" gutterBottom>
                 {rowData.title}
               </Typography>
               <Typography variant="h5">
@@ -55,6 +62,7 @@ const Cards = ({ data }) => {
                   separator=","
                 />
               </Typography>
+              <Typography gutterBottom>{date}</Typography>
             </CardContent>
           </Grid>
         ))}

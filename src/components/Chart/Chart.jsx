@@ -44,6 +44,80 @@ const Chart = ({ country, data: { confirmed, recovered, deaths } }) => {
             },
           ],
         }}
+        options={{
+          responsive: true,
+          title: { text: "Test Title" },
+          scales: {
+            gridLines: {
+              color: "rgba(160, 160, 160,0.5)",
+              zeroLineColor: "rgba(160, 160, 160, 1)",
+            },
+            xAxes: [
+              {
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: "Date",
+                  fontColor: "rgb(197, 217, 241, 1)",
+                  fontSize: 14,
+                },
+                gridLines: {
+                  color: "rgba(160, 160, 160,0.5)",
+                  zeroLineColor: "rgba(160, 160, 160, 1)",
+                },
+                ticks: {
+                  beginAtZero: true,
+                  fontColor: "rgb(197, 217, 241, 1)",
+                },
+              },
+            ],
+            yAxes: [
+              {
+                type: "linear",
+                position: "left",
+                scalePositionLeft: true,
+                display: true,
+                yAxesID: "y-axis-1",
+                scaleLabel: {
+                  display: true,
+                  labelString: "Frequency of Occurence",
+                  fontColor: "rgb(197, 217, 241, 1)",
+                  fontSize: 14,
+                },
+                gridLines: {
+                  color: "rgba(120, 120, 120,0.5)",
+                  zeroLineColor: "rgba(160, 160, 160, 1)",
+                },
+                ticks: {
+                  beginAtZero: true,
+                  fontColor: "rgb(197, 217, 241, 1)",
+                  stepSize: 5,
+                  maxTicksLimit: 20,
+                },
+              },
+              {
+                type: "linear",
+                position: "right",
+                display: true,
+                id: "y-axis-2",
+                scaleLabel: {
+                  display: true,
+                  fontColor: "rgb(197, 217, 241, 1)",
+                  fontSize: 14,
+                },
+                gridLines: {
+                  drawOnChartArea: false, // only want the grid lines for one axis to show up
+                },
+                ticks: {
+                  beginAtZero: true,
+                  fontColor: "rgb(197, 217, 241, 1)",
+                  stepSize: 5,
+                  maxTicksLimit: 20,
+                },
+              },
+            ],
+          },
+        }}
       />
     );
   };
