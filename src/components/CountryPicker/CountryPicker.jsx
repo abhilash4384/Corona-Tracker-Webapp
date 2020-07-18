@@ -49,7 +49,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         renderItem={(item, isHighlighted) => (
           <div
             key={item.label}
-            style={{ background: isHighlighted ? "lightgray" : "white" }}
+            style={{ background: isHighlighted ? "#808080" : "lightgray" }}
           >
             {item.label}
           </div>
@@ -58,14 +58,6 @@ const CountryPicker = ({ handleCountryChange }) => {
         onChange={onChangeHandler}
         onSelect={onSelectHandler}
       />
-      {/* <NativeSelect defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}>
-        <option value="">Global</option>
-        {fetchedCountries.map((country, index) => (
-          <option key={index} value={country}>
-            {country}
-          </option>
-        ))}
-      </NativeSelect> */}
     </FormControl>
   );
 };
