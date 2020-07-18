@@ -2,6 +2,7 @@ import React from "react";
 import { Cards, Chart, CountryPicker, HeaderImage } from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
+import { Container } from "@material-ui/core";
 
 class App extends React.Component {
   state = {
@@ -28,12 +29,12 @@ class App extends React.Component {
   render() {
     const { data, country } = this.state;
     return (
-      <div className={styles.container}>
+      <Container>
         <HeaderImage />
         <CountryPicker handleCountryChange={this.handleCountryChange} />
         <Cards data={data} />
         <Chart data={data} country={country} />
-      </div>
+      </Container>
     );
   }
 }

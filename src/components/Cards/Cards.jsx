@@ -30,7 +30,7 @@ const Cards = ({ data }) => {
   if (!data || !data.confirmed) {
     return "Loading....";
   }
-  const date = new Date(data.lastUpdate).toDateString();
+  // const date = new Date(data.lastUpdate).toDateString();
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">
@@ -55,8 +55,6 @@ const Cards = ({ data }) => {
                   separator=","
                 />
               </Typography>
-              <Typography color="textSecondary">{date}</Typography>
-              <Typography variant="body2">{rowData.description}</Typography>
             </CardContent>
           </Grid>
         ))}

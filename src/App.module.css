@@ -2,16 +2,3 @@ body {
   background-color: #8d7d7d;
   background-image: url("./images/background.png");
 }
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-@media (max-width: 770px) {
-  .container {
-    margin: 0 10%;
-  }
-}

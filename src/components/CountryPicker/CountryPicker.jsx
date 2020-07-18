@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NativeSelect, FormControl, TextField } from "@material-ui/core";
+import { TextField, Box } from "@material-ui/core";
 import { fetchCountries } from "../../api";
 
-import styles from "./CountryPicker.module.css";
+// import styles from "./CountryPicker.module.css";
 import Autocomplete from "react-autocomplete";
 
 const CountryPicker = ({ handleCountryChange }) => {
@@ -34,12 +34,13 @@ const CountryPicker = ({ handleCountryChange }) => {
   };
 
   return (
-    <FormControl className={styles.formControl}>
+    <Box display="flex" justifyContent="center" m={1} p={1}>
       <Autocomplete
         renderInput={(props) => (
           <TextField
             {...props}
-            fullWidth
+            variant="filled"
+            style={{ width: 300 }}
             id="standard-basic"
             label="Enter Country Name"
           />
@@ -58,7 +59,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         onChange={onChangeHandler}
         onSelect={onSelectHandler}
       />
-    </FormControl>
+    </Box>
   );
 };
 

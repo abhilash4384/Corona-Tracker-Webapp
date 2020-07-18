@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
 import { Line, Bar } from "react-chartjs-2";
 import styles from "./Chart.module.css";
+import { Box } from "@material-ui/core";
 
-const Chart = ({ country, data: {confirmed, recovered, deaths} }) => {
+const Chart = ({ country, data: { confirmed, recovered, deaths } }) => {
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -48,7 +49,6 @@ const Chart = ({ country, data: {confirmed, recovered, deaths} }) => {
   };
 
   const barChart = () => {
-      
     return (
       <Bar
         data={{
@@ -61,7 +61,7 @@ const Chart = ({ country, data: {confirmed, recovered, deaths} }) => {
                 "rgba(0,255, 0, 0.5)",
                 "rgba(255,0,0, 0.5)",
               ],
-              data: [confirmed.value, recovered.value, deaths.value]
+              data: [confirmed.value, recovered.value, deaths.value],
             },
           ],
         }}
@@ -74,10 +74,10 @@ const Chart = ({ country, data: {confirmed, recovered, deaths} }) => {
   };
 
   return (
-    <div className={styles.container}>
-      {dailyData.length && !country ? lineChart(): null}
-      {dailyData.length && country ? barChart(): null}
-    </div>
+    <Box display="flex" justifyContent="center" m={1} p={1}>
+      {dailyData.length && !country ? lineChart() : null}
+      {dailyData.length && country ? barChart() : null}
+    </Box>
   );
 };
 
